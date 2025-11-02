@@ -99,7 +99,13 @@ export default function Showcase() {
             >
               <TiltCard>
                 <div className="relative h-56 overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur transition group-hover:bg-white/[0.06]">
-                  <div className={`pointer-events-none absolute inset-0 opacity-60 blur-2xl bg-gradient-to-br ${p.glow}`} />
+                  <motion.div
+                    initial={{ backgroundPosition: '0% 50%' }}
+                    whileHover={{ backgroundPosition: '100% 50%' }}
+                    transition={{ duration: 1.4, ease: 'easeInOut' }}
+                    className={`pointer-events-none absolute inset-0 opacity-60 blur-2xl bg-gradient-to-br ${p.glow}`}
+                    style={{ backgroundSize: '200% 200%' }}
+                  />
                   <div className="relative z-10">
                     <div className="mb-3 inline-flex items-center gap-2 text-xs text-white/70">
                       {p.tags.map(t => (
@@ -136,7 +142,12 @@ export default function Showcase() {
                 className="group relative"
               >
                 <div className="relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur transition hover:bg-white/[0.06]">
-                  <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.25),transparent_60%)] blur-2xl" />
+                  <motion.div
+                    initial={{ scale: 1 }}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.6 }}
+                    className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.25),transparent_60%)] blur-2xl"
+                  />
                   <div className="relative z-10">
                     <div className="mb-2 text-xs uppercase tracking-widest text-white/50">{p.venue} • {p.year}</div>
                     <h3 className="text-base font-semibold text-white/90">{p.title}</h3>

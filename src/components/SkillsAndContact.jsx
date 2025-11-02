@@ -37,9 +37,31 @@ function OrbitingIcons() {
   );
 }
 
+function Particles() {
+  const dots = Array.from({ length: 24 });
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      {dots.map((_, i) => (
+        <div
+          key={i}
+          className="absolute h-1 w-1 rounded-full bg-cyan-400/40 animate-pulse"
+          style={{
+            top: `${(Math.sin(i) * 0.5 + 0.5) * 100}%`,
+            left: `${(Math.cos(i * 1.3) * 0.5 + 0.5) * 100}%`,
+            animationDuration: `${6 + (i % 5)}s`,
+            animationDelay: `${i * 0.2}s`,
+            boxShadow: '0 0 12px rgba(56,189,248,0.5)'
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function SkillsAndContact() {
   return (
-    <section id="skills" className="w-full bg-[#0b0e13] py-20 text-white">
+    <section id="skills" className="relative w-full bg-[#0b0e13] py-20 text-white">
+      <Particles />
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-10 flex items-center justify-between gap-3">
           <h2 className="text-2xl font-bold tracking-tight md:text-3xl">Skills</h2>
